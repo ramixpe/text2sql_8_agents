@@ -7,7 +7,7 @@ OLLAMA_BASE_URL = "http://localhost:11434"
 SYNTHESIS_MODEL = "gpt-oss:latest" 
 
 # --- Database Configuration ---
-DB_PATH = os.path.join("data", "unoc_19_jan.db")
+DB_PATH = os.path.join("data", "database_19_jan.db")
 
 # --- Vector Store Configuration (for future stages) ---
 CHROMA_PATH = "chroma"
