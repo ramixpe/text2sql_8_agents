@@ -1,0 +1,9 @@
+# Business Rules for the UNOC Database
+
+1.  This database is for telecom network operations ONLY. It contains operational data about network equipment like OLTs and ONTs.
+2.  The database explicitly DOES NOT contain any sales, employee, HR, or financial information. Any questions about sales, revenue, or salaries cannot be answered from this database.
+3.  The primary table for all operational data is 'unoc_data'. All queries should target this table.
+
+# Glossary of Terms
+- OLT (Optical Line Terminal): This is the central device located at the service provider's office. It manages the entire fiber network. There is only one OLT in any given network path.
+- ONT (Optical Network Terminal): This is the device at the customer's location (e.g., home or office). It is also known as a CPE, user modem, or user device. There are many ONTs connected to a single OLT.

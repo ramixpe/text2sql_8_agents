@@ -1,30 +1,35 @@
-# vanna_lgx/main.py - S2 VERSION
+# vanna_lgx/main.py - S5 FINAL VERSION
 
-from vanna_lgx.core.graph import build_s2_graph
+import json
+from vanna_lgx.core.graph import build_s5_graph
 
 def main():
-    print("Vanna-LGX (Stage S2): Few-shot Example Aware Agent")
-    print("--------------------------------------------------")
+    print("Vanna-LGX (Stage S5): The Complete Agent")
+    print("-----------------------------------------")
     
-    # Build the LangGraph agent for S2
-    app = build_s2_graph()
+    app = build_s5_graph()
     
-    # Interactive loop
     while True:
         question = input("Ask a question about the database (or type 'exit' to quit): ")
-        if question.lower() == 'exit':
-            break
+        if question.lower() == 'exit': break
         
-        # The input to the graph must be a dictionary with keys matching the state
-        inputs = {"question": question}
+        inputs = {
+            "question": question,
+            "repair_attempts": 0
+        }
         
-        # The second argument is a configuration dictionary.
-        # It can be used to configure execution, like specifying which nodes to run.
         final_state = app.invoke(inputs)
         
         print("\n--- Final Result ---")
         print(final_state.get("summary", "No summary was generated."))
-        print("--------------------\n")
+        
+        # S5 CHANGE: Check for and print the visualization spec
+        if vis_spec := final_state.get("visualization_spec"):
+            print("\n--- Visualization Spec (Vega-Lite JSON) ---")
+            print(json.dumps(vis_spec, indent=2))
+            print("-------------------------------------------\n")
+        else:
+            print("--------------------\n")
 
 if __name__ == "__main__":
     main()
