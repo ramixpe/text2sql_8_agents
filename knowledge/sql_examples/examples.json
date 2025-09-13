@@ -1,0 +1,14 @@
+[
+  {
+    "question": "Which OLTs are made by ALU and are located in the London region?",
+    "sql": "SELECT DISTINCT olt_name FROM unoc_data WHERE olt_manufacturer = 'ALU' AND olt_region = 'London';"
+  },
+  {
+    "question": "What is the average power reading for ONTs connected to the 'OLT-CityA-123' OLT?",
+    "sql": "SELECT AVG(ont_power_reading_dbm) FROM unoc_data WHERE olt_name = 'OLT-CityA-123';"
+  },
+  {
+    "question": "Count the number of distinct ONTs registered in the last 30 days.",
+    "sql": "SELECT COUNT(DISTINCT ont_serial_number) FROM unoc_data WHERE nms_last_seen_at >= date('now', '-30 days');"
+  }
+]
